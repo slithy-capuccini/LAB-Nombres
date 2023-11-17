@@ -15,5 +15,6 @@ def main():
     print(f"The compound names are {get_compound_names(names_freq)}")
     most_common_names_per_year(names_freq)
     print(get_year_frequencies(names_freq, "HUGO"))
+    show_evolution_year(names_freq,"ROCIO")
 if __name__ == "__main__":
     main()

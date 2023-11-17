@@ -1,6 +1,8 @@
 import csv
 from typing import NamedTuple, List, Optional, Set, Tuple, Dict
 from collections import Counter, defaultdict
+import matplotlib.pyplot as plt
+
 NameFreq = NamedTuple("NameFreq",[("year",int),("name",str),("frequency", int),("gender",str)])
 
 
@@ -63,3 +65,10 @@ def get_year_frequencies(names:List[NameFreq], name:str)->List[Tuple[int,int]]:
             d[nf.year]+=nf.frequency
 
     return sorted(d.items())
+
+#EX 9
+def show_evolution_year(names:List[NameFreq], name:str)->None:
+    years, frequencies=zip(*get_year_frequencies(names,name))
+    plt.plot(years,frequencies)
+    plt.title(f"Evolcuion nombre {name}")
+    plt.show()
