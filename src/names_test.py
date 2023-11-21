@@ -16,5 +16,10 @@ def main():
     most_common_names_per_year(names_freq)
     print(get_year_frequencies(names_freq, "HUGO"))
     show_evolution_year(names_freq,"ROCIO")
+
+    print(get_freqs_by_name(names_freq)["MARIA"])
+
+    show_names_freqs(names_freq)
+
 if __name__ == "__main__":
     main()

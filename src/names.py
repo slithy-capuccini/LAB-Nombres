@@ -72,3 +72,23 @@ def show_evolution_year(names:List[NameFreq], name:str)->None:
     plt.plot(years,frequencies)
     plt.title(f"Evolcuion nombre {name}")
     plt.show()
+
+#EX 11 AND EX 12
+def get_freqs_by_name(nfs:List[NameFreq])->Dict[str,int]:
+    d={}
+    names= {e.name for e in nfs}
+    for nf in names:
+        d[nf]=acumulated_frequency(nfs,name=nf)
+    return d
+
+def show_names_freqs(nfs:List[NameFreq], limit:int=10)->None:
+    acumulated_frecuencies=sorted(get_freqs_by_name(nfs).items(), key=lambda n:n[1], reverse=True)[:limit]
+    names, frequencies = zip(*acumulated_frecuencies)
+
+    plt.bar(names,frequencies)
+    plt.xticks(rotation=80)
+    plt.title(f"Frequency of the top {limit} most common names")
+    plt.show()
+
+def acumulated_frequency(nfs: List[NameFreq],name=str)->int:
+    return sum(nf.frequency for nf in nfs if name==nf.name)
